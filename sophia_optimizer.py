@@ -1,13 +1,7 @@
 import torch
-import torch.nn as nn
 from torch.optim.optimizer import Optimizer
 
 class Sophia(Optimizer):
-    """
-    Implements the Sophia optimizer. (Final Corrected Version)
-    This version correctly handles all autograd graphs by vectorizing the
-    Hessian-vector product calculation for the Hutchinson estimator.
-    """
     def __init__(self, params, lr=1e-3, betas=(0.9, 0.999), rho=0.03,
                  weight_decay=0.0, k=10, hessian_computation_type='gnb',
                  eps=1e-12):
