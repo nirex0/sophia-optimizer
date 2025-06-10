@@ -36,11 +36,6 @@ import torch.nn as nn
 from torch.optim.optimizer import Optimizer
 
 class Sophia(Optimizer):
-    """
-    Implements the Sophia optimizer. (Final Corrected Version)
-    This version correctly handles all autograd graphs by vectorizing the
-    Hessian-vector product calculation for the Hutchinson estimator.
-    """
     def __init__(self, params, lr=1e-3, betas=(0.9, 0.999), rho=0.03,
                  weight_decay=0.0, k=10, hessian_computation_type='gnb',
                  eps=1e-12):
@@ -143,7 +138,7 @@ For standard classification tasks with `CrossEntropyLoss`, we use the default `'
 ```python
 import torch
 import torch.nn as nn
-# from sophia_optimizer import Sophia
+from sophia_optimizer import Sophia
 
 # --- Setup Model and Data ---
 class ClassifierNN(nn.Module):
@@ -193,7 +188,7 @@ For regression or any task with a custom loss function, we use the `'hutchinson'
 ```python
 import torch
 import torch.nn as nn
-# from sophia_optimizer import Sophia
+from sophia_optimizer import Sophia
 
 # --- Setup Model and Data ---
 class RegressionNN(nn.Module):
